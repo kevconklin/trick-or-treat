@@ -31,7 +31,7 @@
   <section class="card" id="who-won">
     <header class="card-header">
       <h2>Who won Halloween?</h2>
-      <p class="dek">Two kids went trick-or-treating in the same neighborhood. When they got home, we counted every piece.</p>
+      <p class="dek">Ran a full count of the Halloween haul this weekend. Two kids, one neighborhood, <span data-fill="total"></span> pieces dumped on the kitchen floor and sorted by hand (mostly by me, after bedtime). Here is what we found.</p>
     </header>
 
     <div class="matchup">
@@ -54,7 +54,7 @@
     </div>
 
     <div class="share-bar" id="share-bar" aria-label="Share of all pieces"></div>
-    <p class="winner">The Boy came home with <b data-fill="margin"></b> more pieces. But he is 9 and she is 4. For every year she has been alive, the Girl collected <b data-fill="girlPerYear"></b> pieces. The Boy collected <b data-fill="boyPerYear"></b>. By that measure, she won going away.</p>
+    <p class="winner">The Boy came home with <b data-fill="margin"></b> more pieces, so on raw volume he wins. But he is 9 and she is 4, and he has been doing this for years. Per year of age, the Girl collected <b data-fill="girlPerYear"></b> pieces to his <b data-fill="boyPerYear"></b>. I'm calling that one for her.</p>
 
     <div class="statrow" id="statrow"></div>
 
@@ -74,7 +74,7 @@
   <section class="card" id="the-haul">
     <header class="card-header">
       <h2>What's in the bags?</h2>
-      <p class="dek">Every kind of candy they brought home, biggest piles first. Pink is hers, blue is his. Hover over a row for a closer look.</p>
+      <p class="dek">Every kind of candy they brought home, biggest piles first. Pink is hers, blue is his. Hover over a row if you want the details (a photo, the counts, a rough calorie number).</p>
     </header>
     <div class="controls">
       <span>Sort by</span>
@@ -92,16 +92,16 @@
     <button type="button" class="more-btn" id="show-all"></button>
 
     <h3 class="subhead">Who got more of what</h3>
-    <p class="dek small">Some candies clearly went to one kid. Bars pointing left mean she got more. Bars pointing right mean he got more. Only differences of two or more pieces are shown.</p>
+    <p class="dek small">Some candies clearly ended up with one kid. Bars pointing left mean she got more; bars pointing right mean he got more. I left out anything closer than two pieces since that is basically noise.</p>
     <div class="chart" id="diverging"></div>
 
     <h3 class="subhead">Chocolate vs. everything else</h3>
-    <p class="dek small">About half of each bag was chocolate. She got more gummies and chewy candy. He got more lollipops and hard candy.</p>
+    <p class="dek small">About half of each bag is chocolate, which tracks for this neighborhood. The difference is in the other half: she came home with more gummies and chewy candy, he came home with more lollipops and hard candy. I have theories about which houses he hit.</p>
     <div class="legend" id="cat-legend"></div>
     <div class="chart" id="category-stack"></div>
 
     <h3 class="subhead">Only one kid got these</h3>
-    <p class="dek small">Most kinds of candy showed up in both bags (<span data-fill="shared"></span> of them). These did not.</p>
+    <p class="dek small">Most kinds showed up in both bags (<span data-fill="shared"></span> of them). These did not. His list is longer because he covered more ground. Hers is short because a 4-year-old in a tutu moves about four houses an hour.</p>
     <div class="exclusives">
       <div>
         <h4 class="subhead"><span class="swatch girl"></span>Only in her bag</h4>
@@ -118,7 +118,7 @@
   <section class="card" id="runway">
     <header class="card-header">
       <h2>How long will the candy last?</h2>
-      <p class="dek">A day-by-day guess at when each bag runs out. Kids eat more on weekends and days off school than on school days, when candy only comes out after dinner. The first few days after Halloween are a free-for-all. Pick a weekend pace, and decide whether Dad gets a late-night snack.</p>
+      <p class="dek">A day-by-day guess at when each bag runs out. This is not a straight line. The first few days after Halloween are a free-for-all, school days slow things down (candy only comes out after dinner), and weekends and breaks speed things back up. Pick a weekend pace. There is also an option for Dad to take a piece or two after the kids go to bed, which I'm told is purely hypothetical.</p>
     </header>
     <div class="controls">
       <span>Pieces per day (weekends)</span>
@@ -146,22 +146,22 @@
     <header class="card-header">
       <h2>About this page</h2>
     </header>
-    <p>We counted the candy on Nov. 1, 2026 and typed it into a spreadsheet: one row for each kind of candy, one column for each kid. The Girl is 4 and went as a Rainbow Fairy with Mom and Dad. The Boy is 9, went as Colonel Sanders, and trick-or-treated with friends.</p>
-    <p>Calorie numbers are rough guesses for a typical fun-size piece. How we grouped the candy (chocolate, gummy, hard candy) is our own call.</p>
+    <p>We counted the candy on Nov. 1, 2026 and typed it into a spreadsheet: one row per kind of candy, one column per kid. The Girl is 4 and went as a Rainbow Fairy with Mom and Dad. The Boy is 9, went as Colonel Sanders, and trick-or-treated with friends (and, for a stretch, solo).</p>
+    <p>The calorie numbers are rough estimates for a typical fun-size piece; I did not weigh anything. How the candy is grouped (chocolate, gummy, hard candy) is my own call, and I'm sure someone will disagree about Skittles. The page itself is one HTML file and a bit of D3, styled after FiveThirtyEight's 2016 election forecast because I liked it and it felt right for a two-candidate race.</p>
     <details>
-      <summary>See the full list</summary>
+      <summary>The full list, if you want it</summary>
       <table class="data-table" id="data-table"></table>
     </details>
     <details>
       <summary>Photo credits</summary>
-      <p class="note">Candy photos come from Wikipedia and Wikimedia Commons under the licenses listed.</p>
+      <p class="note">I did not photograph the candy. Photos come from Wikipedia and Wikimedia Commons under the licenses listed.</p>
       <ul class="credits" id="credits"></ul>
     </details>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">Conklin Candy Desk · Built from trick-or-treat-data.xlsx · Design with apologies to FiveThirtyEight, 2016</div>
+  <div class="wrap">Conklin Candy Desk · Built from one spreadsheet and a kitchen floor · Design with apologies to FiveThirtyEight, 2016</div>
 </footer>
 
 <div id="tooltip" class="tooltip" role="tooltip" hidden></div>

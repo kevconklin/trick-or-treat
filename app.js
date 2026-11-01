@@ -36,7 +36,7 @@
   }
   const bg = biggest('girl'), bb = biggest('boy');
   tiles('#statrow', [
-    { label: 'Pieces per year of age', girl: fmt1(G / KIDS.girl.age), boy: fmt1(B / KIDS.boy.age), sub: `She is ${KIDS.girl.age}, he is ${KIDS.boy.age}` },
+    { label: 'Pieces per year of age', girl: fmt1(G / KIDS.girl.age), boy: fmt1(B / KIDS.boy.age), sub: `She is ${KIDS.girl.age}, he is ${KIDS.boy.age}. Do the math.` },
     { label: 'Different kinds of candy', girl: distinct('girl'), boy: distinct('boy'), sub: `out of ${candies.length} kinds total` },
     { label: 'Biggest single pile', girl: bg.girl, boy: bb.boy, sub: bg.name === bb.name ? `${bg.name} for both` : `${bg.name} · ${bb.name}` }
   ]);
@@ -67,8 +67,8 @@
   // ---------- calories ----------
   const kg = kcal('girl'), kb = kcal('boy');
   tiles('#calstats', [
-    { label: 'Rough calorie count', girl: fmtInt(kg), boy: fmtInt(kb), sub: `about ${Math.round((kg + kb) / T)} calories a piece` },
-    { label: 'Miles of walking to burn it off', girl: Math.round(kg / 100), boy: Math.round(kb / 100), sub: 'at 100 calories per mile' }
+    { label: 'Rough calorie count', girl: fmtInt(kg), boy: fmtInt(kb), sub: `about ${Math.round((kg + kb) / T)} calories a piece, give or take` },
+    { label: 'Miles of walking to burn it off', girl: Math.round(kg / 100), boy: Math.round(kb / 100), sub: 'at roughly 100 calories a mile' }
   ]);
 
   // ---------- charts + controls ----------
@@ -96,9 +96,9 @@
     let text = `At ${each} a day on weekends and about half that on school days, her bag is empty on ${C.fmtDay(g.end)} and his on ${C.fmtDay(b.end)}.`;
     if (state.dad > 0) {
       const lost = Math.round(g.dadTotal + b.dadTotal);
-      text += ` Dad's bedtime snack costs the kids ${lost} pieces and moves those dates up from ${C.fmtDay(g.noDad.end)} and ${C.fmtDay(b.noDad.end)} (the faint lines).`;
+      text += ` Dad's bedtime snack costs the kids ${lost} pieces and moves those dates up from ${C.fmtDay(g.noDad.end)} and ${C.fmtDay(b.noDad.end)} (the faint lines are the no-Dad version). Nobody is checking.`;
     }
-    text += ' Shaded columns are weekends and school breaks. Thin vertical lines mark holidays.';
+    text += ' Shaded columns are weekends and school breaks; the thin vertical lines are holidays.';
     document.getElementById('runway-note').textContent = text;
   }
   C.shareBar(document.getElementById('share-bar'), G, B);
