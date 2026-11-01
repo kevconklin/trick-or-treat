@@ -3,6 +3,10 @@
 A single-page, FiveThirtyEight-style breakdown of our Halloween 2026 trick-or-treat haul.
 Static HTML + D3, no build step.
 
+**Live site:** https://kevconklin.github.io/trick-or-treat/
+
+Deployed with GitHub Pages from the `main` branch root. Every push to `main` republishes within about a minute.
+
 ## Files
 
 | File | Purpose |
@@ -24,16 +28,14 @@ python3 -m http.server 8000
 
 ## Deploy to GitHub Pages
 
-```bash
-git init
-git add .
-git commit -m "feat: candy haul forecast site"
-gh repo create trick-or-treat --public --source=. --push
-gh api -X POST repos/{owner}/trick-or-treat/pages -f build_type=legacy -f "source[branch]=main" -f "source[path]=/"
-```
+Already set up: repository `kevconklin/trick-or-treat`, Pages source = `main` / `/ (root)`.
+To publish changes:
 
-Or in the GitHub UI: Settings → Pages → Deploy from a branch → `main` / `/ (root)`.
-The site will be at `https://<user>.github.io/trick-or-treat/`.
+```bash
+git add -A
+git commit -m "feat: describe the change"
+git push
+```
 
 ## Updating the data
 
