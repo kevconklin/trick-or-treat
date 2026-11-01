@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026 Candy Haul</title>
+  <meta name="description" content="What two kids brought home from trick-or-treating in 2026: 180 pieces of candy, counted and charted.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="brand"><span class="brand-mark">C</span> Conklin Candy Desk</div>
+    <h1 class="page-title">The 2026 Candy Haul</h1>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#who-won" class="active">Who won Halloween?</a>
+      <a href="#the-haul">What's in the bags?</a>
+      <a href="#runway">How long will it last?</a>
+      <a href="#method">About this page</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="updated">Counted <span data-fill="updated"></span> · <span data-fill="total"></span> pieces of candy</p>
+
+  <!-- 1. Who won -->
+  <section class="card" id="who-won">
+    <header class="card-header">
+      <h2>Who won Halloween?</h2>
+      <p class="dek">Two kids went trick-or-treating in the same neighborhood. When they got home, we counted every piece.</p>
+    </header>
+
+    <div class="matchup">
+      <div class="contender girl">
+        <div class="avatar" aria-hidden="true">🧚</div>
+        <div class="who">The Girl</div>
+        <div class="meta">Age 4 · Rainbow Fairy · went with Mom and Dad</div>
+        <div class="hero" data-fill="girlTotal"></div>
+        <div class="hero-label">pieces of candy</div>
+        <div class="pieces"><b data-fill="girlShare"></b> of the total</div>
+      </div>
+      <div class="contender boy">
+        <div class="avatar" aria-hidden="true">🍗</div>
+        <div class="who">The Boy</div>
+        <div class="meta">Age 9 · Colonel Sanders · went with friends</div>
+        <div class="hero" data-fill="boyTotal"></div>
+        <div class="hero-label">pieces of candy</div>
+        <div class="pieces"><b data-fill="boyShare"></b> of the total</div>
+      </div>
+    </div>
+
+    <div class="share-bar" id="share-bar" aria-label="Share of all pieces"></div>
+    <p class="winner">The Boy came home with <b data-fill="margin"></b> more pieces. But he is 9 and she is 4. For every year she has been alive, the Girl collected <b data-fill="girlPerYear"></b> pieces. The Boy collected <b data-fill="boyPerYear"></b>. By that measure, she won going away.</p>
+
+    <div class="statrow" id="statrow"></div>
+
+    <div class="topfive">
+      <div>
+        <h3 class="subhead"><span class="swatch girl"></span>Her top five</h3>
+        <ol class="toplist" id="top-girl"></ol>
+      </div>
+      <div>
+        <h3 class="subhead"><span class="swatch boy"></span>His top five</h3>
+        <ol class="toplist" id="top-boy"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. The haul -->
+  <section class="card" id="the-haul">
+    <header class="card-header">
+      <h2>What's in the bags?</h2>
+      <p class="dek">Every kind of candy they brought home, biggest piles first. Pink is hers, blue is his. Hover over a row for a closer look.</p>
+    </header>
+    <div class="controls">
+      <span>Sort by</span>
+      <div class="seg-control" role="group" aria-label="Sort candies" id="sort-control">
+        <button type="button" data-sort="total" aria-pressed="true">Both kids</button>
+        <button type="button" data-sort="girl" aria-pressed="false">Her bag</button>
+        <button type="button" data-sort="boy" aria-pressed="false">His bag</button>
+      </div>
+    </div>
+    <div class="legend"><span><span class="key" style="background:var(--girl)"></span>Girl</span><span><span class="key" style="background:var(--boy)"></span>Boy</span></div>
+    <div class="rank-list">
+      <div class="rank-head"><span></span><span>Candy</span><span>Pieces</span><span style="text-align:right">Total</span></div>
+      <div id="rank-bars"></div>
+    </div>
+    <button type="button" class="more-btn" id="show-all"></button>
+
+    <h3 class="subhead">Who got more of what</h3>
+    <p class="dek small">Some candies clearly went to one kid. Bars pointing left mean she got more. Bars pointing right mean he got more. Only differences of two or more pieces are shown.</p>
+    <div class="chart" id="diverging"></div>
+
+    <h3 class="subhead">Chocolate vs. everything else</h3>
+    <p class="dek small">About half of each bag was chocolate. She got more gummies and chewy candy. He got more lollipops and hard candy.</p>
+    <div class="legend" id="cat-legend"></div>
+    <div class="chart" id="category-stack"></div>
+
+    <h3 class="subhead">Only one kid got these</h3>
+    <p class="dek small">Most kinds of candy showed up in both bags (<span data-fill="shared"></span> of them). These did not.</p>
+    <div class="exclusives">
+      <div>
+        <h4 class="subhead"><span class="swatch girl"></span>Only in her bag</h4>
+        <ul class="chips" id="only-girl"></ul>
+      </div>
+      <div>
+        <h4 class="subhead"><span class="swatch boy"></span>Only in his bag</h4>
+        <ul class="chips" id="only-boy"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Runway -->
+  <section class="card" id="runway">
+    <header class="card-header">
+      <h2>How long will the candy last?</h2>
+      <p class="dek">A day-by-day guess at when each bag runs out. Kids eat more on weekends and days off school than on school days, when candy only comes out after dinner. The first few days after Halloween are a free-for-all. Pick a weekend pace, and decide whether Dad gets a late-night snack.</p>
+    </header>
+    <div class="controls">
+      <span>Pieces per day (weekends)</span>
+      <div class="seg-control" role="group" aria-label="Pieces per day on weekends" id="rate-control">
+        <button type="button" data-rate="1" aria-pressed="false">1</button>
+        <button type="button" data-rate="2" aria-pressed="false">2</button>
+        <button type="button" data-rate="3" aria-pressed="true">3</button>
+        <button type="button" data-rate="5" aria-pressed="false">5</button>
+      </div>
+      <span class="control-gap">Dad after bedtime</span>
+      <div class="seg-control" role="group" aria-label="Pieces Dad takes from each bag each night" id="dad-control">
+        <button type="button" data-dad="0" aria-pressed="true">Hands off</button>
+        <button type="button" data-dad="1" aria-pressed="false">1 a night</button>
+        <button type="button" data-dad="2" aria-pressed="false">2 a night</button>
+      </div>
+    </div>
+    <div class="legend" id="runway-legend"></div>
+    <div class="chart" id="runway-chart"></div>
+    <p class="note" id="runway-note"></p>
+    <div class="statrow" id="calstats"></div>
+  </section>
+
+  <!-- 4. About -->
+  <section class="card method" id="method">
+    <header class="card-header">
+      <h2>About this page</h2>
+    </header>
+    <p>We counted the candy on Nov. 1, 2026 and typed it into a spreadsheet: one row for each kind of candy, one column for each kid. The Girl is 4 and went as a Rainbow Fairy with Mom and Dad. The Boy is 9, went as Colonel Sanders, and trick-or-treated with friends.</p>
+    <p>Calorie numbers are rough guesses for a typical fun-size piece. How we grouped the candy (chocolate, gummy, hard candy) is our own call.</p>
+    <details>
+      <summary>See the full list</summary>
+      <table class="data-table" id="data-table"></table>
+    </details>
+    <details>
+      <summary>Photo credits</summary>
+      <p class="note">Candy photos come from Wikipedia and Wikimedia Commons under the licenses listed.</p>
+      <ul class="credits" id="credits"></ul>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Conklin Candy Desk · Built from trick-or-treat-data.xlsx · Design with apologies to FiveThirtyEight, 2016</div>
+</footer>
+
+<div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="data.js"></script>
+<script src="charts.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
